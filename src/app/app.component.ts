@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'swapi';
+  title = 'SWAPI';
+  constructor(private location: Location) {}
+
+  public toggle(event:any) {
+    event.preventDefault();
+    event.target.parentElement.parentElement.querySelector('.details').classList.toggle('hidden');
+  }
+
+  public backpressed(event:any) {
+    console.log("back pressed");
+    event.preventDefault();
+    this.location.back();
+  }
 }

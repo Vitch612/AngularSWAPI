@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #e46b24;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #f91717;
+  }
+
+  .mainnav {
+    list-style-type: none;
+    position:relative;
+  }
+  .mainnav li {
+    background-color: #eeeeee;
+    margin:5px;
+    display:inline-block;
+    min-width:120px;    
+    text-align: center;
+  }
+
+  .mainnav li a {
+    color:black;
+    font-weight:bold;
+    text-shadow: 1px 1px 3px #707070;
+    display:inline-block;
+    padding:5px 15px;
+    width:100%;
+  }
+
+  .mainnav li a:hover {
+    color:white;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    /*box-sizing: border-box;*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding:10px;
+  }
+
+  ul.listing {
+   list-style-type: none; 
+  }
+
+  .title,
+  .title a {
+    color: #e46b24;
+    font-weight:bold;
+    font-size:18px;
+    text-shadow: 1px 1px 2px black;
+  }
+  .title a:hover {
+    color: #792d09;
+  }
+  
+  .hidden {
+    display:none;
+  }
+
+  .arrow {    
+    position:relative;
+    top:-1px;
+  }
+  .details {
+    background:#ffcece;
+    box-shadow:2px 2px 8px black;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:20px;
+  }
+
+  .details a {
+    color:#ff1616;
+  }
+  .details a:hover {
+    color:#ee0000;
+    font-weight:bold; 
+  }
+
+  .crawler {
+
+  }

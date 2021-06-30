@@ -1,0 +1,77 @@
+<style>
+</style>
+<div style="padding:10px;">
+<span *ngIf="id==null else singletitle">
+  <h2>Spaceships List</h2>
+</span>
+<ng-template #singletitle>
+  <h2>Spaceship Details</h2>
+</ng-template>
+<ul class="listing">
+  <li *ngFor="let item of spaceships">
+    <div class="listentry">
+      <span *ngIf="id!=null else listing">
+        <span *ngIf="id==item.url else nothing">
+          <div class="title">
+            {{item.name}}
+          </div>
+          <div class="details hidden">
+            <strong>MGLT:</strong> {{item.MGLT}}<BR>
+            <strong>Class:</strong> {{item.starship_class}}<BR>
+            <strong>Model:</strong> {{item.model}}<BR>
+            <strong>Maker:</strong> {{item.manufacturer}}<BR>
+            <strong>Cost:</strong> {{item.cost_in_credits}}<BR>
+            <strong>Cargo:</strong> {{item.cargo_capacity}}<BR>
+            <strong>Consumables:</strong> {{item.consumables}}<BR>
+            <strong>Hyperdrive:</strong> {{item.hyperdrive_rating}}<BR>
+            <strong>Speed:</strong> {{item.max_atmosphering_speed}}<BR>        
+            <strong>Length:</strong> {{item.length}}<BR>
+            <strong>Crew:</strong> {{item.crew}}<BR>    
+            <strong>Passengers:</strong> {{item.passengers}}<BR>
+            <strong>Movies:</strong><BR>
+            <li *ngFor="let film of item.films">          
+              <a *ngIf="(film|hasprop: 'id')" [routerLink]="['/movies', $any(film)['id']]" href="/movies/{{$any(film)['id']}}">{{$any(film)['value']}}</a>
+              <a *ngIf="!(film|hasprop: 'id')" [routerLink]="['/movies', film]" href="/movies/{{film}}">{{film}}</a>          
+            </li>
+            <strong>Pilots:</strong><BR>    
+            <li *ngFor="let pilot of item.pilots">
+              <a *ngIf="(pilot|hasprop: 'id')"  [routerLink]="['/pilots', $any(pilot)['id']]" href="/pilot/{{$any(pilot)['id']}}">{{$any(pilot)['value']}}</a>
+              <a *ngIf="!(pilot|hasprop: 'id')" [routerLink]="['/pilots', pilot]" href="/pilots/{{pilot}}">pilot}}</a>
+            </li><BR>
+          </div>
+        </span>
+        <ng-template #nothing></ng-template>
+      </span>
+      <ng-template #listing>
+        <div class="title">
+          <a href="#" (click)="toggle($event)">{{item.name}}</a>
+        </div>
+        <div class="details hidden">
+          <strong>MGLT:</strong> {{item.MGLT}}<BR>
+          <strong>Class:</strong> {{item.starship_class}}<BR>
+          <strong>Model:</strong> {{item.model}}<BR>
+          <strong>Maker:</strong> {{item.manufacturer}}<BR>
+          <strong>Cost:</strong> {{item.cost_in_credits}}<BR>
+          <strong>Cargo:</strong> {{item.cargo_capacity}}<BR>
+          <strong>Consumables:</strong> {{item.consumables}}<BR>
+          <strong>Hyperdrive:</strong> {{item.hyperdrive_rating}}<BR>
+          <strong>Speed:</strong> {{item.max_atmosphering_speed}}<BR>        
+          <strong>Length:</strong> {{item.length}}<BR>
+          <strong>Crew:</strong> {{item.crew}}<BR>    
+          <strong>Passengers:</strong> {{item.passengers}}<BR>
+          <strong>Movies:</strong><BR>
+          <li *ngFor="let film of item.films">          
+            <a *ngIf="(film|hasprop: 'id')" [routerLink]="['/movies', $any(film)['id']]" href="/movies/{{$any(film)['id']}}">{{$any(film)['value']}}</a>
+            <a *ngIf="!(film|hasprop: 'id')" [routerLink]="['/movies', film]" href="/movies/{{film}}">{{film}}</a>          
+          </li>
+          <strong>Pilots:</strong><BR>    
+          <li *ngFor="let pilot of item.pilots">
+            <a *ngIf="(pilot|hasprop: 'id')"  [routerLink]="['/pilots', $any(pilot)['id']]" href="/pilot/{{$any(pilot)['id']}}">{{$any(pilot)['value']}}</a>
+            <a *ngIf="!(pilot|hasprop: 'id')" [routerLink]="['/pilots', pilot]" href="/pilots/{{pilot}}">pilot}}</a>
+          </li><BR>
+        </div>
+      </ng-template>
+    </div>
+  </li>
+</ul>
+</div>

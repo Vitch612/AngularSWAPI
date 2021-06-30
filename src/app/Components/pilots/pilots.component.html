@@ -1,0 +1,92 @@
+<style>
+</style>
+<div style="padding:10px;">
+<span *ngIf="id==null else singletitle">
+  <h2>Pilots List</h2>
+</span>
+<ng-template #singletitle>
+  <h2>Pilot Details</h2>
+</ng-template>
+
+<ul class="listing">
+  <li *ngFor="let item of pilots">
+    <div class="listentry">
+      <span *ngIf="id!=null else listing">
+        <span *ngIf="id==item.url else nothing">
+          <div class="title">
+            {{item.name}}
+          </div>
+          <div class="details">        
+            <strong>Height:</strong> {{item.height}}<BR>
+            <strong>Mass:</strong> {{item.mass}}<BR>
+            <strong>Hair Color:</strong> {{item.hair_color}}<BR>   
+            <strong>Skin Color:</strong> {{item.skin_color}}<BR>
+            <strong>Eye color:</strong> {{item.eye_color}}<BR>
+            <strong>Birth Year:</strong> {{item.birth_year}}<BR>   
+            <strong>Gender:</strong> {{item.gender}}<BR>
+            <strong>Homeworld:</strong> {{item.homeworld}}<BR>
+  
+            <strong>Movies:</strong><BR>
+            <li *ngFor="let subitem of item.films">          
+              <a *ngIf="(subitem|hasprop: 'id')" [routerLink]="['/movies', $any(subitem)['id']]" href="/movies/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+              <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/movies', subitem]" href="/movies/{{subitem}}">{{subitem}}</a>          
+            </li>
+            <strong>Species:</strong><BR>    
+            <li *ngFor="let subitem of item.species">          
+              <a *ngIf="(subitem|hasprop: 'id')"  [routerLink]="['/species', $any(subitem)['id']]" href="/species/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+              <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/species', subitem]" href="/species/{{subitem}}">{{subitem}}</a>          
+            </li>
+            <strong>Vehicles:</strong><BR>    
+            <li *ngFor="let subitem of item.vehicles">          
+              <a *ngIf="(subitem|hasprop: 'id')"   [routerLink]="['/vehicles', $any(subitem)['id']]" href="/vehicles/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+              <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/vehicles', subitem]" href="/vehicles/{{subitem}}">{{subitem}}</a>          
+            </li>
+            <strong>Starships:</strong><BR>    
+            <li *ngFor="let subitem of item.starships">          
+              <a *ngIf="(subitem|hasprop: 'id')"   [routerLink]="['/spaceships', $any(subitem)['id']]"  href="/spaceships/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+              <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/spaceships', subitem]" href="/spaceships/{{subitem}}">{{subitem}}</a>          
+            </li><BR>
+          </div>
+        </span>
+        <ng-template #nothing></ng-template>
+      </span>
+      <ng-template #listing>
+        <div class="title">
+          <a href="#" (click)="toggle($event)">{{item.name}}</a>
+        </div>
+        <div class="details hidden">        
+          <strong>Height:</strong> {{item.height}}<BR>
+          <strong>Mass:</strong> {{item.mass}}<BR>
+          <strong>Hair Color:</strong> {{item.hair_color}}<BR>   
+          <strong>Skin Color:</strong> {{item.skin_color}}<BR>
+          <strong>Eye color:</strong> {{item.eye_color}}<BR>
+          <strong>Birth Year:</strong> {{item.birth_year}}<BR>   
+          <strong>Gender:</strong> {{item.gender}}<BR>
+          <strong>Homeworld:</strong> {{item.homeworld}}<BR>
+  
+          <strong>Movies:</strong><BR>
+          <li *ngFor="let subitem of item.films">          
+            <a *ngIf="(subitem|hasprop: 'id')" [routerLink]="['/movies', $any(subitem)['id']]" href="/movies/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+            <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/movies', subitem]" href="/movies/{{subitem}}">{{subitem}}</a>          
+          </li>
+          <strong>Species:</strong><BR>    
+          <li *ngFor="let subitem of item.species">          
+            <a *ngIf="(subitem|hasprop: 'id')"  [routerLink]="['/species', $any(subitem)['id']]" href="/species/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+            <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/species', subitem]" href="/species/{{subitem}}">{{subitem}}</a>          
+          </li>
+          <strong>Vehicles:</strong><BR>    
+          <li *ngFor="let subitem of item.vehicles">          
+            <a *ngIf="(subitem|hasprop: 'id')"   [routerLink]="['/vehicles', $any(subitem)['id']]" href="/vehicles/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+            <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/vehicles', subitem]" href="/vehicles/{{subitem}}">{{subitem}}</a>          
+          </li>
+          <strong>Starships:</strong><BR>    
+          <li *ngFor="let subitem of item.starships">          
+            <a *ngIf="(subitem|hasprop: 'id')"   [routerLink]="['/spaceships', $any(subitem)['id']]"  href="/spaceships/{{$any(subitem)['id']}}">{{$any(subitem)['value']}}</a>
+            <a *ngIf="!(subitem|hasprop: 'id')" [routerLink]="['/spaceships', subitem]" href="/spaceships/{{subitem}}">{{subitem}}</a>          
+          </li><BR>
+        </div>
+      </ng-template>      
+    </div>
+  </li>
+</ul>
+</div>
